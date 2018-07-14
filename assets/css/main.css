@@ -41,9 +41,6 @@ p {
 h1, h2, h3, h4 {
   color: #85D8CE;
 }
-h3, h4, h5, p {
-  
-}
 h1 {
   font-size: 36px;
   line-height: 44px;
@@ -199,6 +196,12 @@ p a {
   transition: color .2s;
 }
 
+@media (max-width: 767px) {
+  #header .col-12 {
+    margin-bottom: 20px;
+  }
+}
+
 /*
   ========================================
   Highlight
@@ -237,6 +240,43 @@ p a {
 }
 #grid h3 {
   color: #348AC7;
+}
+
+/*
+  ========================================
+  About
+  ========================================
+*/
+
+#grid .row {
+  margin-bottom: 40px;
+}
+#grid h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+#grid p {
+  margin-bottom: 20px;
+}
+#grid img {
+  width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #grid .row {
+    margin-bottom: 60px;
+  }
+  #grid .img-wrapper {
+    margin: 0 20px;
+  }
+}
+@media (min-width: 992px) {
+  #grid .row {
+    margin-bottom: 80px;
+  }
+  #grid .img-wrapper {
+    margin: 0 40px;
+  }
 }
 
 /*
