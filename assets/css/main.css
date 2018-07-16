@@ -74,38 +74,19 @@ em {
 
 /*
   ========================================
-  Leads
-  ========================================
-*/
-
-.lead {
-  text-align: center;
-}
-.lead h1 {
-  color: #085078;
-}
-.lead p {
-  font-size: 21px;
-  line-height: 33px;
-  color: #fff;
-}
-
-/*
-  ========================================
   Links
   ========================================
 */
 
 a {
-  color: #085078;
+  color: #348AC7;
   text-decoration: none;
+  transition: color .2s;
 }
 a:hover {
-  color: #348AC7;
-}
-p a {
-  border-bottom: 1px solid #fff;
-  border-style: dotted;
+  color: #085078;
+  text-decoration: none;
+  transition: color .2s;
 }
 .primary-header a,
 .primary-footer a {
@@ -315,6 +296,21 @@ p a {
   position: relative;
   top: 2px;
   font-size: 18px;
+}
+
+/*
+  ========================================
+  Contact
+  ========================================
+*/
+
+#grid .text-wrapper {
+  margin-bottom: 40px;
+}
+#map {
+  height: 400px;
+  width: 100%;
+  border: none;
 }
 
 /*
