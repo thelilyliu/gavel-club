@@ -288,7 +288,7 @@ a:hover {
   margin-bottom: 30px;
 }
 
-#grid .collapse-link {
+#leaders #grid .collapse-link {
   display: block;
   margin-bottom: 20px;
 }
@@ -296,6 +296,41 @@ a:hover {
   position: relative;
   top: 2px;
   font-size: 18px;
+}
+
+/*
+  ========================================
+  Education
+  ========================================
+*/
+
+#education #grid .nav-link {
+  font-size: 18px;
+}
+#education .tab-pane {
+  margin-top: 40px;
+}
+
+#lessons iframe {
+  margin-bottom: 30px;
+}
+
+#manuals img:not(.collapse-icon) {
+  width: 100%;
+  max-width: 250px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#collapseExample1 img,
+#collapseExample2 img {
+  padding: 0 15px;
+}
+#collapseExample1 h4,
+#collapseExample2 h4 {
+  margin: 15px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 /*
