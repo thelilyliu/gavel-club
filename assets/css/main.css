@@ -174,6 +174,9 @@ a:hover {
   color: #FFFFFF;
   transition: color .2s;
 }
+#header .nav-link.active {
+  background-color: #348AC7;
+}
 #header .nav-link:hover {
   color: #85D8CE;
   transition: color .2s;
@@ -355,6 +358,16 @@ a:hover {
   margin: 15px;
   margin-bottom: 30px;
   text-align: center;
+}
+
+/*
+  ========================================
+  Gallery
+  ========================================
+*/
+
+#gallery img {
+  width: 100%;
 }
 
 /*
