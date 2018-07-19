@@ -169,8 +169,12 @@ a:hover {
   text-transform: uppercase;
 }
 
+#header .nav {
+  margin-top: 0;
+}
 #header .nav-link {
   font-size: 18px;
+  letter-spacing: 1px;
   color: #FFFFFF;
   transition: color .2s;
 }
@@ -182,9 +186,18 @@ a:hover {
   transition: color .2s;
 }
 
+@media (max-width: 1199px) {
+  #header .nav {
+    margin-top: 25px;
+  }
+}
 @media (max-width: 767px) {
   #header .col-12 {
     margin-bottom: 20px;
+  }
+  #header .nav {
+    justify-content: center!important;
+    margin-top: 10px;
   }
 }
 
@@ -366,9 +379,54 @@ a:hover {
   ========================================
 */
 
-#gallery img {
-  width: 100%;
+#gallery .collapse-link {
+  display: block;
+}
+#gallery .collapse-link h3 {
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 0;
+  display: inline-block;
+  color: #348AC7;
+  transition: color .2s;
+}
+#gallery .collapse-link:hover h3 {
+  color: #085078;
+  transition: color .2s;
+}
+#gallery .collapse-icon {
+  position: relative;
+  bottom: 3px;
+}
+
+#gallery .container {
+  padding-bottom: 30px;
+}
+#gallery .lightgallery {
   margin-bottom: 30px;
+}
+#gallery img:not(.collapse-icon) {
+  width: 24%;
+  padding: 10px;
+}
+
+@media (max-width: 1199px) {
+  #gallery img {
+    width: 33%;
+    padding: 10px;
+  }
+}
+@media (max-width: 991px) {
+  #gallery img {
+    width: 49%;
+    padding: 10px;
+  }
+}
+@media (max-width: 767px) {
+  #gallery img {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 /*
@@ -394,102 +452,4 @@ a:hover {
   height: 400px;
   width: 100%;
   border: none;
-}
-
-/*
-  ========================================
-  Speakers
-  ========================================
-*/
-
-.speaker {
-  margin-bottom: 44px;
-}
-.speaker-info {
-  border: 2px solid #dfe2e5;
-  border-radius: 5px;
-  margin-top: 88px;
-  padding-bottom: 22px;
-  text-align: center;
-}
-.speaker-info img {
-  border-radius: 50%;
-  height: 130px;
-  margin: -66px 0 22px 0;
-  vertical-align: top;
-}
-
-/*
-  ========================================
-  Venue
-  ========================================
-*/
-
-.venue-theatre {
-  margin-bottom: 66px;
-}
-.venue-hotel {
-  margin-bottom: 22px;
-}
-.venue-map {
-  height: 264px;
-}
-
-/*
-  ========================================
-  Club
-  ========================================
-*/
-
-.news-item {
-  margin-bottom: 10px;
-}
-.pic img {
-  max-width: 900px;
-  border: 15px solid #085078;
-  border-radius: 30px;
-}
-.pic h4 {
-  text-align: center;
-  font-size: large;
-  margin-top: 22px;
-  margin-bottom: 78px;
-}
-
-/*
-  ========================================
-  Roles
-  ========================================
-*/
-
-#iframe_container {
-  margin-bottom: 60px;
-}
-.list {
-  margin-bottom: 60px;
-  width: 33%;
-}
-.list ul {
-  list-style: square inside;
-}
-
-/*
-  ========================================
-  Education
-  ========================================
-*/
-
-.track img {
-  display: block;
-  margin: 15px auto;
-}
-.track a h4 {
-  text-align: center;
-}
-.track {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: 5px solid #dfe2e5;
-  border-radius: 30px;
-  margin-bottom: 60px;
 }
