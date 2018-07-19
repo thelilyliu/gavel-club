@@ -368,6 +368,17 @@ a:hover {
 
 #gallery img {
   width: 100%;
+  margin-bottom: 30px;
+}
+
+/*
+  ========================================
+  News
+  ========================================
+*/
+
+#news .card-title {
+  line-height: 140%;
 }
 
 /*
