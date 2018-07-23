@@ -54,6 +54,11 @@
       var currentLocation = defaultLocation
 
       function initEventHandler() {
+        $('body').on('click', '.fixed-action-btn', function() {
+          var $elem = $(this)
+          $elem.hasClass('active') ? $elem.removeClass('active') : $elem.addClass('active')
+        })
+
 		    $('body').on('click', '#location-1', function() {
           currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
           reverseGeocodeLocation(currentLocation, 'Pandora')
