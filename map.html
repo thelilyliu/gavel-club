@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brampton Gavel Club</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
       #map {
@@ -27,13 +27,31 @@
 
     <div id="map"></div>
 
+    <div class="fixed-action-btn" style="left: 23px; right: initial;">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+      <ul>
+        <li><a class="btn yellow darken-1" style="text-transform: initial;">Nordstrom</a></li>
+        <li><a class="btn green" style="text-transform: initial;">Starbucks</a></li>
+        <li><a class="btn blue" style="text-transform: initial;">Winners</a></li>
+      </ul>
+    </div>
+
     <!-- Scripts -->
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn')
+        var instances = M.FloatingActionButton.init(elems, {
+          direction: 'top',
+          hoverEnabled: false
+        })
+      })
+
       var map, infoWindow
       
       function initMap() {
@@ -86,8 +104,8 @@
         }).done(function(json, textStatus, jqXHr) {
           let place = json.results[0].formatted_address.split(',')[0]
           let arr = json.results[1].formatted_address.split(',')
-          let address1 = arr[0]
-          let address2 = arr[1] + ', ' + arr[2] + ', ' + arr[3]
+          let address1 = arr[0] + ', ' + arr[1]
+          let address2 = arr[2] + ', ' + arr[3]
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
           drawOnMap(pos, text)
