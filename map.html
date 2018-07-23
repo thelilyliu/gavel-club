@@ -62,18 +62,30 @@
 		    $('body').on('click', '#location-1', function() {
           currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
           reverseGeocodeLocation(currentLocation, 'Pandora')
+          fireToast(5000)
         })
 
         $('body').on('click', '#location-2', function() {
           currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
           reverseGeocodeLocation(currentLocation, "McDonald's")
+          fireToast(-1)
         })
 
         $('body').on('click', '#location-3', function() {
           currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
           reverseGeocodeLocation(currentLocation, 'Starbucks')
+          fireToast(2000)
         })
 		  }
+
+      function fireToast(timeout) {
+        if (timeout > 0) {
+          setTimeout(() => {
+            var toastHTML = '<span>Reminder: save money towards your goal!</span><button class="btn-flat toast-action">Okay</button>'
+            M.toast({html: toastHTML})
+          }, timeout)
+        }
+      }
       
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
