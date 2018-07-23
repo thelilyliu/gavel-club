@@ -29,12 +29,12 @@
 
     <div class="fixed-action-btn" style="left: 23px; right: initial;">
       <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
+        <i class="large material-icons">explore</i>
       </a>
       <ul>
-        <li><a class="btn yellow darken-1" style="text-transform: initial;">Nordstrom</a></li>
-        <li><a class="btn green" style="text-transform: initial;">Starbucks</a></li>
-        <li><a class="btn blue" style="text-transform: initial;">Winners</a></li>
+        <li id="location-1"><a class="btn purple" style="text-transform: initial;">Nordstrom</a></li>
+        <li id="location-2"><a class="btn blue" style="text-transform: initial;">Winners</a></li>
+        <li id="location-3"><a class="btn green" style="text-transform: initial;">Starbucks</a></li>
       </ul>
     </div>
 
@@ -44,20 +44,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.fixed-action-btn')
-        var instances = M.FloatingActionButton.init(elems, {
-          direction: 'top',
-          hoverEnabled: false
-        })
+      $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton()
+        initEventHandler()
       })
 
       var map, infoWindow
+      var defaultLocation = { lat: 43.648289, lng: -79.380954 }
+      var currentLocation = defaultLocation
+
+      function initEventHandler() {
+		    $('body').on('click', '#location-1', function() {
+          currentLocation = { lat: 43.655077, lng: -79.380999 } // Nordstrom
+          reverseGeocodeLocation(currentLocation)
+        })
+
+        $('body').on('click', '#location-2', function() {
+          currentLocation = { lat: 43.650026, lng: -79.379330 } // Winners
+          reverseGeocodeLocation(currentLocation)
+        })
+
+        $('body').on('click', '#location-3', function() {
+          currentLocation = { lat: 43.649041, lng: -79.383753 } // Starbucks
+          reverseGeocodeLocation(currentLocation)
+        })
+		  }
       
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
-          center: { lat: 43.648289, lng: -79.380954 }
+          center: currentLocation
         })
 
         getCurrentLocation()
@@ -90,7 +106,7 @@
         infoWindow.open(map)
       }
 
-      async function reverseGeocodeLocation(pos) {
+      function reverseGeocodeLocation(pos) {
         const lat = pos.lat
         const lng = pos.lng
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
@@ -102,6 +118,8 @@
           dataType: 'json',
           cache: false
         }).done(function(json, textStatus, jqXHr) {
+          console.log(json.results)
+
           let place = json.results[0].formatted_address.split(',')[0]
           let arr = json.results[1].formatted_address.split(',')
           let address1 = arr[0] + ', ' + arr[1]
