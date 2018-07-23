@@ -32,8 +32,8 @@
         <i class="large material-icons">explore</i>
       </a>
       <ul>
-        <li id="location-1"><a class="btn purple" style="text-transform: initial;">Nordstrom</a></li>
-        <li id="location-2"><a class="btn blue" style="text-transform: initial;">Winners</a></li>
+        <li id="location-1"><a class="btn blue" style="text-transform: initial;">Pandora</a></li>
+        <li id="location-2"><a class="btn red" style="text-transform: initial;">McDonald's</a></li>
         <li id="location-3"><a class="btn green" style="text-transform: initial;">Starbucks</a></li>
       </ul>
     </div>
@@ -55,18 +55,18 @@
 
       function initEventHandler() {
 		    $('body').on('click', '#location-1', function() {
-          currentLocation = { lat: 43.655077, lng: -79.380999 } // Nordstrom
-          reverseGeocodeLocation(currentLocation)
+          currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
+          reverseGeocodeLocation(currentLocation, 'Pandora')
         })
 
         $('body').on('click', '#location-2', function() {
-          currentLocation = { lat: 43.650026, lng: -79.379330 } // Winners
-          reverseGeocodeLocation(currentLocation)
+          currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
+          reverseGeocodeLocation(currentLocation, "McDonald's")
         })
 
         $('body').on('click', '#location-3', function() {
-          currentLocation = { lat: 43.649041, lng: -79.383753 } // Starbucks
-          reverseGeocodeLocation(currentLocation)
+          currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
+          reverseGeocodeLocation(currentLocation, 'Starbucks')
         })
 		  }
       
@@ -88,7 +88,7 @@
               lng: position.coords.longitude
             }
 
-            reverseGeocodeLocation(pos)
+            reverseGeocodeLocation(pos, 'Toronto Dominion Centre')
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter())
           })
@@ -106,7 +106,7 @@
         infoWindow.open(map)
       }
 
-      function reverseGeocodeLocation(pos) {
+      function reverseGeocodeLocation(pos, place) {
         const lat = pos.lat
         const lng = pos.lng
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
@@ -120,10 +120,9 @@
         }).done(function(json, textStatus, jqXHr) {
           console.log(json.results)
 
-          let place = json.results[0].formatted_address.split(',')[0]
           let arr = json.results[1].formatted_address.split(',')
-          let address1 = arr[0] + ', ' + arr[1]
-          let address2 = arr[2] + ', ' + arr[3]
+          let address1 = arr[0]
+          let address2 = arr[1] + ', ' + arr[2] + ', ' + arr[3]
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
           drawOnMap(pos, text)
