@@ -91,7 +91,7 @@
       function fireToast(timeout) {
         if (timeout > 0) {
           setTimeout(() => {
-            var toastHTML = '<span style="margin-bottom: 10px;">Reminder: save money towards your goal! Every little bit counts.</span>'
+            var toastHTML = '<span style="margin-bottom: 10px;">Reminder: save money towards your goal! Every little bit counts.</span><button class="btn-flat toast-action">Okay</button>'
             M.toast({html: toastHTML})
           }, timeout)
         }
