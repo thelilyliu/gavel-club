@@ -33,7 +33,7 @@
       </a>
       <ul>
         <li id="location-1"><a class="btn blue" style="text-transform: initial;">LCBO</a></li>
-        <li id="location-2"><a class="btn red" style="text-transform: initial;">Bulk Bar </a></li>
+        <li id="location-2"><a class="btn red" style="text-transform: initial;">Bulk Barn</a></li>
         <li id="location-3"><a class="btn green" style="text-transform: initial;">Dollarama</a></li>
       </ul>
     </div>
@@ -104,7 +104,7 @@
         })
 
         // getCurrentLocation()
-        reverseGeocodeLocation(currentLocation, 'Toronto Dominion Centre')
+        reverseGeocodeLocation(currentLocation, 'Communitech')
       }
 
       function getCurrentLocation() {
@@ -116,7 +116,7 @@
               lng: position.coords.longitude
             }
 
-            reverseGeocodeLocation(pos, 'Toronto Dominion Centre')
+            reverseGeocodeLocation(pos, 'Communitech')
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter())
           })
