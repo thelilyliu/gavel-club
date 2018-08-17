@@ -32,9 +32,9 @@
         <i class="large material-icons">explore</i>
       </a>
       <ul>
-        <li id="location-1"><a class="btn blue" style="text-transform: initial;">Pandora</a></li>
-        <li id="location-2"><a class="btn red" style="text-transform: initial;">McDonald's</a></li>
-        <li id="location-3"><a class="btn green" style="text-transform: initial;">Starbucks</a></li>
+        <li id="location-1"><a class="btn blue" style="text-transform: initial;">LCBO</a></li>
+        <li id="location-2"><a class="btn red" style="text-transform: initial;">Bulk Bar </a></li>
+        <li id="location-3"><a class="btn green" style="text-transform: initial;">Dollarama</a></li>
       </ul>
     </div>
 
@@ -44,13 +44,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function() {
         $('.fixed-action-btn').floatingActionButton()
         initEventHandler()
       })
 
       var map, infoWindow
-      var defaultLocation = { lat: 43.648289, lng: -79.380954 }
+      // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
+      var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
       var currentLocation = defaultLocation
 
       function initEventHandler() {
@@ -60,28 +61,37 @@
         })
 
 		    $('body').on('click', '#location-1', function() {
-          currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
-          reverseGeocodeLocation(currentLocation, 'Pandora')
-          fireToast(5000)
+          // currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
+          // reverseGeocodeLocation(currentLocation, 'Pandora')
+          // fireToast(4000)
+          currentLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
+          reverseGeocodeLocation(currentLocation, 'LCBO')
+          fireToast(2000)
         })
 
         $('body').on('click', '#location-2', function() {
-          currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
-          reverseGeocodeLocation(currentLocation, "McDonald's")
-          fireToast(-1)
+          // currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
+          // reverseGeocodeLocation(currentLocation, "McDonald's")
+          // fireToast(-1)
+          currentLocation = { lat: 43.469213, lng: -80.516121 } // Bulk Barn
+          reverseGeocodeLocation(currentLocation, 'Bulk Barn')
+          fireToast(4000)
         })
 
         $('body').on('click', '#location-3', function() {
-          currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
-          reverseGeocodeLocation(currentLocation, 'Starbucks')
-          fireToast(2000)
+          // currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
+          // reverseGeocodeLocation(currentLocation, 'Starbucks')
+          // fireToast(2000)
+          currentLocation = { lat: 43.449283, lng: -80.488247 } // Dollarama
+          reverseGeocodeLocation(currentLocation, 'Dollarama')
+          fireToast(-1)
         })
 		  }
 
       function fireToast(timeout) {
         if (timeout > 0) {
           setTimeout(() => {
-            var toastHTML = '<span style="margin-bottom: 10px;">Reminder: save money towards your goal! Every little bit counts.</span><button class="btn-flat toast-action">Okay</button>'
+            var toastHTML = '<span style="margin-bottom: 10px;">Reminder: save money towards your goal! Every little bit counts.</span>'
             M.toast({html: toastHTML})
           }, timeout)
         }
