@@ -12,23 +12,6 @@ body {
 
 /*
   ========================================
-  Rows
-  ========================================
-*/
-
-.row-alt {
-  min-width: 960px;
-}
-.row-alt {
-  background: #cbe2c1;
-  background: -webkit-linear-gradient(to right, #83a4d4, #b6fbff);
-  background:    -moz-linear-gradient(to right, #83a4d4, #b6fbff);
-  background:         linear-gradient(to right, #83a4d4, #b6fbff);
-  padding: 44px 0 22px 0;
-}
-
-/*
-  ========================================
   Typography
   ========================================
 */
@@ -151,8 +134,10 @@ a:hover {
   text-decoration: none;
 }
 
-.subtitle h3 {
+.subtitle {
   text-align: right;
+}
+.subtitle h3 {
   font-weight: 300;
 }
 .subtitle a {
@@ -165,12 +150,28 @@ a:hover {
   transition: color .2s;
 }
 .subtitle h5 {
-  text-align: right;
   text-transform: uppercase;
 }
 
+@media (max-width: 767px) {
+  #header .col-12 {
+    margin-bottom: 20px;
+  }
+  #header .title,
+  #header .subtitle {
+    text-align: center;
+  }
+}
+
+/*
+  ========================================
+  Navigation
+  ========================================
+*/
+
 #header .nav {
   margin-top: 0;
+  margin-bottom: 30px;
 }
 #header .nav-link {
   font-size: 18px;
@@ -192,9 +193,6 @@ a:hover {
   }
 }
 @media (max-width: 767px) {
-  #header .col-12 {
-    margin-bottom: 20px;
-  }
   #header .nav {
     justify-content: center!important;
     margin-top: 10px;
@@ -208,7 +206,7 @@ a:hover {
 */
 
 #highlight {
-  padding: 40px 0;
+  padding: 10px 0 40px;
   text-align: center;
 }
 #highlight h2 {
@@ -239,6 +237,13 @@ a:hover {
 }
 #grid h3 {
   color: #348AC7;
+}
+#grid h2.section-title {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  margin-top: -15px;
+  text-align: center;
 }
 
 /*
@@ -399,7 +404,7 @@ a:hover {
   bottom: 3px;
 }
 
-#gallery .container {
+#gallery #grid .container {
   padding-bottom: 30px;
 }
 #gallery .lightgallery {
@@ -411,19 +416,19 @@ a:hover {
 }
 
 @media (max-width: 1199px) {
-  #gallery img {
+  #gallery img:not(.collapse-icon) {
     width: 33%;
     padding: 10px;
   }
 }
 @media (max-width: 991px) {
-  #gallery img {
+  #gallery img:not(.collapse-icon) {
     width: 49%;
     padding: 10px;
   }
 }
 @media (max-width: 767px) {
-  #gallery img {
+  #gallery img:not(.collapse-icon) {
     width: 100%;
     padding: 10px;
   }
@@ -437,6 +442,17 @@ a:hover {
 
 #news .card-title {
   line-height: 140%;
+}
+
+@media (max-width: 991px) {
+  #news .card-columns {
+    column-count: 2;
+  }
+}
+@media (max-width: 767px) {
+  #news .card-columns {
+    column-count: 1;
+  }
 }
 
 /*
