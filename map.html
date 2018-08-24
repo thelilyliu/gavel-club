@@ -125,13 +125,15 @@
       }
       
       function initMap() {
+        alert('init map\n', currentLocation)
+
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           center: currentLocation
         })
 
         // getCurrentLocation()
-        reverseGeocodeLocation(currentLocation, 'Communitech')
+        // reverseGeocodeLocation(currentLocation, 'Communitech')
       }
 
       function getCurrentLocation() {
