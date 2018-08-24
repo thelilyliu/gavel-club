@@ -46,21 +46,25 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('.fixed-action-btn').floatingActionButton()
+        
         initLocation()
         initEventHandler()
       })
 
       var map, infoWindow
       // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
-      var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
+      // var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
+      var defaultLocation = { latitude: 0, longitude: 0 }
       var currentLocation = defaultLocation
 
       function initLocation() {
-        let lat = getParameterByName('lat')
-        let lng = getParameterByName('lng')
+        let latitude = getParameterByName('lat')
+        let longitude = getParameterByName('lng')
         
-        defaultLocation = { lat, lng }
-        currentLocation = { lat, lng }
+        defaultLocation = { lat: latitude, lng: longitude }
+        currentLocation = { lat: latitude, lng: longitude }
+
+        alert(latitude + '\n' + longitude)
       }
 
       function getParameterByName(name, url) {
