@@ -65,6 +65,7 @@
         currentLocation = { lat: latitude, lng: longitude }
 
         alert(latitude + '\n' + longitude)
+        reverseGeocodeLocation(currentLocation, 'My Current Location')
       }
 
       function getParameterByName(name, url) {
