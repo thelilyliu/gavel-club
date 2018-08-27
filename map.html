@@ -54,14 +54,15 @@
       var map, infoWindow
       // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
       // var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
-      var defaultLocation = { lat: 0, lng: 0 }
-      var currentLocation = defaultLocation
+      // var defaultLocation = { lat: 0, lng: 0 }
+      // var currentLocation = defaultLocation
+      var currentLocation = { lat: 0, lng: 0 }
 
       function initLocation() {
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
-        defaultLocation = { lat: latitude, lng: longitude }
+        // defaultLocation = { lat: latitude, lng: longitude }
         currentLocation = { lat: latitude, lng: longitude }
 
         alert(latitude + '\n' + longitude)
@@ -124,7 +125,7 @@
         }
       }
       
-      function initMap() {
+      async function initMap() {
         alert('init map\n', currentLocation)
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -133,7 +134,7 @@
         })
 
         // getCurrentLocation()
-        reverseGeocodeLocation(currentLocation, 'My Initial Position')
+        await reverseGeocodeLocation(currentLocation, 'My Initial Position')
       }
 
       function getCurrentLocation() {
