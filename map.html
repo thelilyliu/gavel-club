@@ -124,7 +124,9 @@
           center: { lat: 43.450940, lng: -80.498263 } // currentLocation
         })
 
-        reverseGeocodeLocation(currentLocation, 'My Initial Position')
+        setTimeout(() => {
+          reverseGeocodeLocation(currentLocation, 'My Initial Position')
+        }, 500)
       }
 
       function reverseGeocodeLocation(pos, place) {
