@@ -110,7 +110,7 @@
         }
       }
       
-      function initMap() {
+      async function initMap() {
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
@@ -126,7 +126,7 @@
         alert('second', city)
       }
 
-      async function reverseGeocodeLocation(pos, place, draw) {
+      function reverseGeocodeLocation(pos, place, draw) {
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
         const myURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=' + key
 
