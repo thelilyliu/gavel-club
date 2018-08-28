@@ -148,7 +148,7 @@
           let address2 = arr[1] + ', ' + arr[2] + ', ' + arr[3]
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
-          alert(text)
+          // alert(text)
 
           drawOnMap(pos, text)
         }).fail(function(jqXHr, textStatus, errorThrown) {
@@ -157,6 +157,8 @@
       }
 
       function drawOnMap(pos, text) {
+        alert(pos, text)
+
         infoWindow = new google.maps.InfoWindow
         infoWindow.setPosition(pos)
         infoWindow.setContent(text)
