@@ -122,11 +122,11 @@
           center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
 
-        let city = reverseGeocodeLocation(myLocation, '', false)
+        let city = await reverseGeocodeLocation(myLocation, '', false)
         alert('second', city)
       }
 
-      function reverseGeocodeLocation(pos, place, draw) {
+      async function reverseGeocodeLocation(pos, place, draw) {
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
         const myURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=' + key
 
