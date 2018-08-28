@@ -157,7 +157,7 @@
       }
 
       function drawOnMap(pos, text) {
-        alert(pos, text)
+        alert('latitude: ' + pos.lat + '\nlongitude: ' + pos.lng + '\n' + text)
 
         infoWindow = new google.maps.InfoWindow
         infoWindow.setPosition(pos)
