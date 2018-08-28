@@ -75,28 +75,28 @@
 
 		    $('body').on('click', '#location-1', function() {
           // currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
-          // reverseGeocodeLocation(currentLocation, 'Pandora')
+          // reverseGeocodeLocation(currentLocation, 'Pandora', true)
           // fireToast(4000)
           myLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          reverseGeocodeLocation(myLocation, 'LCBO')
+          reverseGeocodeLocation(myLocation, 'LCBO', true)
           fireToast(2000)
         })
 
         $('body').on('click', '#location-2', function() {
           // currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
-          // reverseGeocodeLocation(currentLocation, "McDonald's")
+          // reverseGeocodeLocation(currentLocation, "McDonald's", true)
           // fireToast(-1)
           myLocation = { lat: 43.469213, lng: -80.516121 } // Bulk Barn
-          reverseGeocodeLocation(myLocation, 'Bulk Barn')
+          reverseGeocodeLocation(myLocation, 'Bulk Barn', true)
           fireToast(4000)
         })
 
         $('body').on('click', '#location-3', function() {
           // currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
-          // reverseGeocodeLocation(currentLocation, 'Starbucks')
+          // reverseGeocodeLocation(currentLocation, 'Starbucks', true)
           // fireToast(2000)
           myLocation = { lat: 43.449283, lng: -80.488247 } // Dollarama
-          reverseGeocodeLocation(myLocation, 'Dollarama')
+          reverseGeocodeLocation(myLocation, 'Dollarama', true)
           fireToast(-1)
         })
 		  }
@@ -121,9 +121,12 @@
           zoom: 14,
           center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
+
+        let city = reverseGeocodeLocation(myLocation, '', false)
+        alert(city)
       }
 
-      function reverseGeocodeLocation(pos, place) {
+      function reverseGeocodeLocation(pos, place, draw) {
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
         const myURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=' + key
 
@@ -138,7 +141,11 @@
           let address2 = arr[1] + ', ' + arr[2] + ', ' + arr[3]
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
-          drawOnMap(pos, text)
+          if (draw) {
+            drawOnMap(pos, text)
+          } else {
+            return arr[1]
+          }
         }).fail(function(jqXHr, textStatus, errorThrown) {
           console.log('error')
         }).always(function() {})
@@ -153,7 +160,7 @@
         infoWindow.open(map)
 
         map.setCenter(newPos)
-        // map.setZoom(18)
+        map.setZoom(18)
       }
     </script>
 
