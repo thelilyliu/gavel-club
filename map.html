@@ -47,7 +47,6 @@
       $(document).ready(function() {
         $('.fixed-action-btn').floatingActionButton()
         
-        initLocation()
         initEventHandler()
       })
 
@@ -57,17 +56,6 @@
       // var defaultLocation = { lat: 0, lng: 0 }
       // var currentLocation = defaultLocation
       var currentLocation = { lat: 0, lng: 0 }
-
-      function initLocation() {
-        let latitude = getParameterByName('lat')
-        let longitude = getParameterByName('lng')
-        
-        // defaultLocation = { lat: latitude, lng: longitude }
-        currentLocation = { lat: latitude, lng: longitude }
-
-        alert(latitude + '\n' + longitude)
-        reverseGeocodeLocation(currentLocation, 'My Current Location')
-      }
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -126,6 +114,11 @@
       }
       
       async function initMap() {
+        let latitude = getParameterByName('lat')
+        let longitude = getParameterByName('lng')
+        
+        currentLocation = { lat: latitude, lng: longitude }
+
         alert('init map\n', currentLocation)
 
         map = new google.maps.Map(document.getElementById('map'), {
