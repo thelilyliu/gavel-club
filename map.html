@@ -171,13 +171,14 @@
 
       function drawOnMap(pos, text) {
         alert('latitude: ' + pos.lat + '\nlongitude: ' + pos.lng + '\n' + text)
+        let newPos = new google.maps.LatLng(pos.lat, pos.lng)
 
         infoWindow = new google.maps.InfoWindow
-        infoWindow.setPosition(pos)
+        infoWindow.setPosition(newPos)
         infoWindow.setContent(text)
         infoWindow.open(map)
 
-        map.setCenter(pos)
+        map.setCenter(newPos)
         // map.setZoom(18)
       }
     </script>
