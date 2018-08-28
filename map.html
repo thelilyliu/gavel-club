@@ -111,13 +111,13 @@
         }
       }
       
-      async function initMap() {
+      function initMap() {
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
         currentLocation = { lat: latitude, lng: longitude }
 
-        alert('init map\nlat: ' + latitude + '\nlng: ' + longitude)
+        alert('init map\nlatitude: ' + currentLocation.lat + '\nlongitude: ' + currentLocation.lng)
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
