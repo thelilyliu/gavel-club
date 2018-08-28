@@ -32,9 +32,9 @@
         <i class="large material-icons">explore</i>
       </a>
       <ul>
-        <li id="location-1"><a class="btn blue" style="text-transform: initial; width: 100px;">LCBO</a></li>
-        <li id="location-2"><a class="btn green" style="text-transform: initial; width: 100px;">Dollarama</a></li>
-        <li id="location-3"><a class="btn red" style="text-transform: initial; width: 100px;">Bulk Barn</a></li>
+        <li id="location-1"><a class="btn blue" style="text-transform: initial; width: 100px;">Store 1</a></li>
+        <li id="location-2"><a class="btn green" style="text-transform: initial; width: 100px;">Store 2</a></li>
+        <li id="location-3"><a class="btn red" style="text-transform: initial; width: 100px;">Store 3</a></li>
       </ul>
     </div>
 
@@ -110,9 +110,7 @@
         })
 
 		    $('body').on('click', '#location-1', function() {
-          alert('hello 1')
           let place = initialCity.locations[0]
-          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
@@ -120,9 +118,7 @@
         })
 
         $('body').on('click', '#location-2', function() {
-          alert('hello 2')
           let place = initialCity.locations[1]
-          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
@@ -130,9 +126,7 @@
         })
 
         $('body').on('click', '#location-3', function() {
-          alert('hello 3')
           let place = initialCity.locations[2]
-          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
@@ -154,8 +148,7 @@
         let longitude = getParameterByName('lng')
         
         myLocation = { lat: latitude, lng: longitude }
-        // initialLocation = { lat: latitude, lng: longitude }
-        initialLocation = { lat: 43.453305, lng: -80.501396 } // Kitchener
+        initialLocation = { lat: latitude, lng: longitude }
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
@@ -181,43 +174,21 @@
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
           if (isInitial) {
-            alert(text)
-            
             if (text.includes('San Francisco')) {
-              alert('Hello SF')
               initialCity = cities[0]
-              alert(initialCity.name)
-
-              $('#location-1 a').text('Location 1')
-              $('#location-2 a').text('Location 2')
-              $('#location-3 a').text('Location 3')
             } else if (text.includes('Toronto')) {
-              alert('Hello TO')
               initialCity = cities[1]
-              alert(initialCity.name)
-
-              $('#location-1 a').text('Pandora')
-              $('#location-2 a').text('Starbucks')
-              $('#location-3 a').text("McDonald's")
             } else if (text.includes('Kitchener')) {
-              alert('Hello Kitchen')
               initialCity = cities[2]
-              alert(initialCity.name)
-
-              $('#location-1 a').text('Bulk Barn')
-              $('#location-2 a').text('LCBO')
-              $('#location-3 a').text('Dollarama')
             } else if (text.includes('Waterloo')) {
-              alert('Hello Loo')
               initialCity = cities[3]
-              alert(initialCity.name)
-
-              $('#location-1 a').text('Location 1')
-              $('#location-2 a').text('Location 2')
-              $('#location-3 a').text('Location 3')
             } else {
               alert('City not found.')
             }
+
+            $('#location-1 a').text(initialCity.locations[0].store)
+            $('#location-2 a').text(initialCity.locations[1].store)
+            $('#location-3 a').text(initialCity.locations[2].store)
           } else {
             drawOnMap(pos, text)
           }
