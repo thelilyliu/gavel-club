@@ -55,6 +55,7 @@
       // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
       // var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
       var currentLocation = { lat: 0, lng: 0 }
+      var defaultLocation
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -80,8 +81,8 @@
           // reverseGeocodeLocation(currentLocation, 'Pandora')
           // fireToast(4000)
           // currentLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          alert(currentLocation.lat, currentLocation.lng)
-          reverseGeocodeLocation(currentLocation, 'Home')
+          alert(defaultLocation.lat, defaultLocation.lng)
+          reverseGeocodeLocation(defaultLocation, 'Home')
           // fireToast(2000)
         })
 
@@ -127,6 +128,7 @@
         let longitude = getParameterByName('lng')
         
         currentLocation = { lat: latitude, lng: longitude }
+        defaultLocation = { lat: latitude, lng: longitude }
 
         alert('init map\nlatitude: ' + currentLocation.lat + '\nlongitude: ' + currentLocation.lng)
 
