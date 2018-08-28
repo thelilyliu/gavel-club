@@ -141,7 +141,17 @@
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
 
           if (isInitial) {
-            alert('hello: ' + arr[1])
+            let city = arr[1]
+            
+            if (city === 'San Francisco') {
+              alert('Hello SF')
+            } else if (city === 'Toronto') {
+              alert('Hello TO')
+            } else if (city === 'Kitchener') {
+              alert('Hello Kitchen')
+            } else if (city === 'Waterloo') {
+              alert('Hello Loo')
+            }
           } else {
             drawOnMap(pos, text)
           }
