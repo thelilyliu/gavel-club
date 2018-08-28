@@ -52,10 +52,7 @@
       })
 
       var map, infoWindow
-      // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
-      // var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
-      var currentLocation = { lat: 0, lng: 0 }
-      var defaultLocation
+      var myLocation = { lat: 0, lng: 0 }
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -72,7 +69,7 @@
 
       function initEventHandler() {
         $('body').on('click', '.fixed-action-btn', function() {
-          var $elem = $(this)
+          let $elem = $(this)
           $elem.hasClass('active') ? $elem.removeClass('active') : $elem.addClass('active')
         })
 
@@ -81,8 +78,8 @@
           // reverseGeocodeLocation(currentLocation, 'Pandora')
           // fireToast(4000)
           // currentLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          alert(defaultLocation.lat, defaultLocation.lng)
-          reverseGeocodeLocation(defaultLocation, 'Home')
+          alert(myLocation.lat, myLocation.lng)
+          reverseGeocodeLocation(myLocation, 'Home')
           // fireToast(2000)
         })
 
@@ -90,8 +87,8 @@
           // currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
           // reverseGeocodeLocation(currentLocation, 'Pandora')
           // fireToast(4000)
-          currentLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          reverseGeocodeLocation(currentLocation, 'LCBO')
+          myLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
+          reverseGeocodeLocation(myLocation, 'LCBO')
           fireToast(2000)
         })
 
@@ -99,8 +96,8 @@
           // currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
           // reverseGeocodeLocation(currentLocation, "McDonald's")
           // fireToast(-1)
-          currentLocation = { lat: 43.469213, lng: -80.516121 } // Bulk Barn
-          reverseGeocodeLocation(currentLocation, 'Bulk Barn')
+          myLocation = { lat: 43.469213, lng: -80.516121 } // Bulk Barn
+          reverseGeocodeLocation(myLocation, 'Bulk Barn')
           fireToast(4000)
         })
 
@@ -108,8 +105,8 @@
           // currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
           // reverseGeocodeLocation(currentLocation, 'Starbucks')
           // fireToast(2000)
-          currentLocation = { lat: 43.449283, lng: -80.488247 } // Dollarama
-          reverseGeocodeLocation(currentLocation, 'Dollarama')
+          myLocation = { lat: 43.449283, lng: -80.488247 } // Dollarama
+          reverseGeocodeLocation(myLocation, 'Dollarama')
           fireToast(-1)
         })
 		  }
@@ -127,26 +124,17 @@
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
-        currentLocation = { lat: latitude, lng: longitude }
-        defaultLocation = { lat: latitude, lng: longitude }
-
-        alert('init map\nlatitude: ' + currentLocation.lat + '\nlongitude: ' + currentLocation.lng)
+        myLocation = { lat: latitude, lng: longitude }
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
-          center: { lat: 43.450940, lng: -80.498263 } // currentLocation
+          center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
-
-        setTimeout(() => {
-          // reverseGeocodeLocation(currentLocation, 'My Initial Position')
-        }, 2000)
       }
 
       function reverseGeocodeLocation(pos, place) {
-        const lat = pos.lat
-        const lng = pos.lng
         const key = 'AIzaSyAbS6fryg6wE36ZvMVE90E71WjkFGSx1Jw'
-        const myURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=' + key
+        const myURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=' + key
 
         $.ajax({
           type: 'GET',
@@ -154,14 +142,10 @@
           dataType: 'json',
           cache: false
         }).done(function(json, textStatus, jqXHr) {
-          console.log(json.results)
-
           let arr = json.results[1].formatted_address.split(',')
           let address1 = arr[0]
           let address2 = arr[1] + ', ' + arr[2] + ', ' + arr[3]
           let text = '<b>' + place + '</b><br>' + address1 + '<br>' + address2
-
-          // alert(text)
 
           drawOnMap(pos, text)
         }).fail(function(jqXHr, textStatus, errorThrown) {
@@ -170,7 +154,6 @@
       }
 
       function drawOnMap(pos, text) {
-        alert('latitude: ' + pos.lat + '\nlongitude: ' + pos.lng + '\n' + text)
         let newPos = new google.maps.LatLng(pos.lat, pos.lng)
 
         infoWindow = new google.maps.InfoWindow
