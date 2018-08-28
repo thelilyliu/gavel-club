@@ -143,14 +143,16 @@
           if (isInitial) {
             let city = arr[1]
             
-            if (city === 'San Francisco') {
+            if (city === ' San Francisco') {
               alert('Hello SF')
-            } else if (city === 'Toronto') {
+            } else if (city === ' Toronto') {
               alert('Hello TO')
-            } else if (city === 'Kitchener') {
+            } else if (city === ' Kitchener') {
               alert('Hello Kitchen')
-            } else if (city === 'Waterloo') {
+            } else if (city === ' Waterloo') {
               alert('Hello Loo')
+            } else {
+              alert('City not found.')
             }
           } else {
             drawOnMap(pos, text)
