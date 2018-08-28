@@ -53,8 +53,6 @@
       var map, infoWindow
       // var defaultLocation = { lat: 43.648289, lng: -79.380954 } // Toronto
       // var defaultLocation = { lat: 43.450940, lng: -80.498263 } // Kitchener
-      // var defaultLocation = { lat: 0, lng: 0 }
-      // var currentLocation = defaultLocation
       var currentLocation = { lat: 0, lng: 0 }
 
       function getParameterByName(name, url) {
@@ -126,35 +124,7 @@
           center: currentLocation
         })
 
-        // getCurrentLocation()
-        await reverseGeocodeLocation(currentLocation, 'My Initial Position')
-      }
-
-      function getCurrentLocation() {
-        // Try HTML5 geolocation
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }
-
-            reverseGeocodeLocation(pos, 'Communitech')
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter())
-          })
-        } else {
-          // Browser doesn't support geolocation
-          handleLocationError(false, infoWindow, map.getCenter())
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos)
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.')
-        infoWindow.open(map)
+        // await reverseGeocodeLocation(currentLocation, 'My Initial Position')
       }
 
       function reverseGeocodeLocation(pos, place) {
