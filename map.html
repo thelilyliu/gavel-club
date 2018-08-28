@@ -55,6 +55,41 @@
       var initialLocation = { lat: 0, lng: 0 }
       var initialCity = ''
 
+      const cities = [
+        {
+          name: 'San Francisco',
+          locations: [
+            { store: 'Location 1', position: { lat: 0, lng: 0 } },
+            { store: 'Location 2', position: { lat: 0, lng: 0 } },
+            { store: 'Location 3', position: { lat: 0, lng: 0 } }
+          ]
+        },
+        {
+          name: 'Toronto',
+          locations: [
+            { store: 'Pandora', position: { lat: 43.654552, lng: -79.381112 } },
+            { store: 'Starbucks', position: { lat: 43.649284, lng: -79.378259 } },
+            { store: "McDonald's", position: { lat: 43.647250, lng: -79.378415 } }
+          ]
+        },
+        {
+          name: 'Kitchener',
+          locations: [
+            { store: 'Bulk Barn', position: { lat: 43.469213, lng: -80.516121 } },
+            { store: 'LCBO', position: { lat: 43.453305, lng: -80.501396 } },
+            { store: 'Dollarama', position: { lat: 43.449283, lng: -80.488247 } }
+          ]
+        },
+        {
+          name: 'Waterloo',
+          locations: [
+            { store: 'Location 1', position: { lat: 0, lng: 0 } },
+            { store: 'Location 2', position: { lat: 0, lng: 0 } },
+            { store: 'Location 3', position: { lat: 0, lng: 0 } }
+          ]
+        }
+      ]
+
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
         name = name.replace(/[\[\]]/g, '\\$&')
@@ -75,29 +110,26 @@
         })
 
 		    $('body').on('click', '#location-1', function() {
-          // currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
-          // reverseGeocodeLocation(currentLocation, 'Pandora', false)
-          // fireToast(4000)
-          myLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          reverseGeocodeLocation(myLocation, 'LCBO', false)
-          fireToast(2000)
-        })
+          let place = intialCity.locations[0]
+          myLocation = place.position
 
-        $('body').on('click', '#location-2', function() {
-          // currentLocation = { lat: 43.647250, lng: -79.378415 } // McDonald's
-          // reverseGeocodeLocation(currentLocation, "McDonald's", false)
-          // fireToast(-1)
-          myLocation = { lat: 43.469213, lng: -80.516121 } // Bulk Barn
-          reverseGeocodeLocation(myLocation, 'Bulk Barn', false)
+          reverseGeocodeLocation(myLocation, place.store, false)
           fireToast(4000)
         })
 
+        $('body').on('click', '#location-2', function() {
+          let place = intialCity.locations[1]
+          myLocation = place.position
+
+          reverseGeocodeLocation(myLocation, place.store, false)
+          fireToast(2000)
+        })
+
         $('body').on('click', '#location-3', function() {
-          // currentLocation = { lat: 43.649284, lng: -79.378259 } // Starbucks
-          // reverseGeocodeLocation(currentLocation, 'Starbucks', false)
-          // fireToast(2000)
-          myLocation = { lat: 43.449283, lng: -80.488247 } // Dollarama
-          reverseGeocodeLocation(myLocation, 'Dollarama', false)
+          let place = intialCity.locations[2]
+          myLocation = place.position
+
+          reverseGeocodeLocation(myLocation, place.store, false)
           fireToast(-1)
         })
 		  }
@@ -124,7 +156,7 @@
           center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
 
-        reverseGeocodeLocation(myLocation, 'Initial Location', true)
+        reverseGeocodeLocation(initialLocation, 'Initial Location', true)
       }
 
       function reverseGeocodeLocation(pos, place, isInitial) {
@@ -147,28 +179,28 @@
             
             if (city === ' San Francisco') {
               alert('Hello SF')
-              initialCity = 'San Francisco'
+              initialCity = cities[0]
 
               $('#location-1 a').text('Location 1')
               $('#location-2 a').text('Location 2')
               $('#location-3 a').text('Location 3')
             } else if (city === ' Toronto') {
               alert('Hello TO')
-              initialCity = 'Toronto'
+              initialCity = cities[1]
 
               $('#location-1 a').text('Pandora')
               $('#location-2 a').text('Starbucks')
               $('#location-3 a').text("McDonald's")
             } else if (city === ' Kitchener') {
               alert('Hello Kitchen')
-              initialCity = 'Kitchener'
+              initialCity = cities[2]
 
               $('#location-1 a').text('Bulk Barn')
               $('#location-2 a').text('LCBO')
               $('#location-3 a').text('Dollarama')
             } else if (city === ' Waterloo') {
               alert('Hello Loo')
-              initialCity = 'Waterloo'
+              initialCity = cities[3]
 
               $('#location-1 a').text('Location 1')
               $('#location-2 a').text('Location 2')
