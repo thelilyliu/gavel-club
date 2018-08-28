@@ -51,7 +51,8 @@
       })
 
       var map, infoWindow
-      var myLocation, defaultLocation = { lat: 0, lng: 0 }
+      var myLocation = { lat: 0, lng: 0 }
+      var defaultLocation = { lat: 0, lng: 0 }
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -113,14 +114,13 @@
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
-        myLocation, defaultLocation = { lat: latitude, lng: longitude }
+        myLocation = { lat: latitude, lng: longitude }
+        defaultLocation = { lat: latitude, lng: longitude }
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
-
-        alert(defaultLocation.lat, defaultLocation.lng)
       }
 
       function reverseGeocodeLocation(pos, place) {
