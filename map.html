@@ -32,7 +32,6 @@
         <i class="large material-icons">explore</i>
       </a>
       <ul>
-        <li id="location-0"><a class="btn yelow" style="text-transform: initial; width: 100px;">Home</a></li>
         <li id="location-1"><a class="btn blue" style="text-transform: initial; width: 100px;">LCBO</a></li>
         <li id="location-2"><a class="btn red" style="text-transform: initial; width: 100px;">Bulk Barn</a></li>
         <li id="location-3"><a class="btn green" style="text-transform: initial; width: 100px;">Dollarama</a></li>
@@ -52,7 +51,7 @@
       })
 
       var map, infoWindow
-      var myLocation = { lat: 0, lng: 0 }
+      var myLocation, defaultLocation = { lat: 0, lng: 0 }
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -71,16 +70,6 @@
         $('body').on('click', '.fixed-action-btn', function() {
           let $elem = $(this)
           $elem.hasClass('active') ? $elem.removeClass('active') : $elem.addClass('active')
-        })
-
-        $('body').on('click', '#location-0', function() {
-          // currentLocation = { lat: 43.654552, lng: -79.381112 } // Pandora
-          // reverseGeocodeLocation(currentLocation, 'Pandora')
-          // fireToast(4000)
-          // currentLocation = { lat: 43.453305, lng: -80.501396 } // LCBO
-          alert(myLocation.lat, myLocation.lng)
-          reverseGeocodeLocation(myLocation, 'Home')
-          // fireToast(2000)
         })
 
 		    $('body').on('click', '#location-1', function() {
@@ -124,12 +113,14 @@
         let latitude = getParameterByName('lat')
         let longitude = getParameterByName('lng')
         
-        myLocation = { lat: latitude, lng: longitude }
+        myLocation, defaultLocation = { lat: latitude, lng: longitude }
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           center: new google.maps.LatLng(myLocation.lat, myLocation.lng)
         })
+
+        alert(defaultLocation.lat, defaultLocation.lng)
       }
 
       function reverseGeocodeLocation(pos, place) {
