@@ -53,7 +53,7 @@
       var map, infoWindow
       var myLocation = { lat: 0, lng: 0 }
       var initialLocation = { lat: 0, lng: 0 }
-      var initialCity = ''
+      var initialCity = {}
 
       const cities = [
         {
@@ -111,6 +111,7 @@
 
 		    $('body').on('click', '#location-1', function() {
           let place = intialCity.locations[0]
+          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
@@ -119,6 +120,7 @@
 
         $('body').on('click', '#location-2', function() {
           let place = intialCity.locations[1]
+          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
@@ -127,6 +129,7 @@
 
         $('body').on('click', '#location-3', function() {
           let place = intialCity.locations[2]
+          alert(place.name)
           myLocation = place.position
 
           reverseGeocodeLocation(myLocation, place.store, false)
